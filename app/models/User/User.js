@@ -1,21 +1,46 @@
-const Address = require("../Address/Address");
-const Phone = require("./Phone");
+
 module.exports = class User {
-    constructor(id, first_name, last_name, email, password, address, phone, created_at, updated_at) {
+    constructor(id, firstName, lastName, email, password, address, phone, verified,createdAt, updatedAt) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.address = Address;
-        this.phone = Phone;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.address = address;
+        this.phone = phone;
+        this.verified = verified;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-
     // Getters
+    getId() {
+        return this.id;
+    }
 
+    getEmail() {
+        return this.email;
+    }
 
+    getName(type){
+        switch (type) {
+            case 'first':
+                return this.firstName
+            case 'last':
+                return this.lastName
+            default:
+                return `${this.firstName} ${this.lastName}`;
+
+        }
+
+    }
+    getAddresses() {
+        return this.address;
+    }
+
+    getPhones() {
+        return this.phone;
+
+    }
 }
 
